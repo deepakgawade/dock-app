@@ -72,7 +72,7 @@ app.use(
 app.use(express.json());
 
 app.get("/api/v1", (req, res) => {
-  res.send("<h1>Hi!!!!!!!!,Welcome to Docker learning!! </h1>");
+  res.send("<h1>Hi!!!,Welcome to Docker learning!! </h1>");
 });
 const port = process.env.PORT || 3000;
 
@@ -81,5 +81,5 @@ app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/user", userRouter);
 
 app.listen(port, () => {
-  console.log("listenning on port 30009!");
+  console.log(`listenning on port ${port}!`);
 });

@@ -1,1 +1,76 @@
+
+#download image files and build each layer
+docker build .
+
+#check images create in docker
+docker image ls
+
+#to remove a image
+docker image rm <image id>
+
+#to give a name to 
+docker build . -t <image name> //like node-app-image
+
+#to remove running image
+docker rm <app-name> -f
+
+
+#run a image
+docker run -d --name <app-name> <image name> 
+//docker run -d --name node-app node-app-image
+
+#see running container
+docker ps
+
+#to connect to container with outside world we need to forward traffic one port to another.
+ docker run -p <outside_port>:<container_port> -d --name <app-name> <image name> 
+
+ //docker run -p 3000:3000 -d --name node-app node-app-image
+
+#to check dir of app
+docker exec -it <app-name> bash
+//docker exec -it node-app bash
+
+#add dockerignore file so we not push node_modules to cotainer.
+
+
+#up command
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
+
+#to sync changes on local machine with container below flag is used cuurent workig dir=${pwd}
+ docker run -v <current-working-dir>:/app -p <outside_port>:<container_port> -d --name <app-name> <image name> 
+
+#if there is any crash
+sudo docker ps -a
+
+#logs of crash
+docker logs <imge_name>
+docker logs node-app
+
+#volumes in docker check
+docker volume ls
+
+#delete volumes a persisten data storage
+docker rm <app-name> -fv
+
+#docker compse file will help us to run multiple containers with mongo , nodejs, redis at once 
+
+
 this isa s file fromm the world
+
+# stopping container 
+docker-compose down -v
+
+#for production we dont keep any bimount
+
+
+#ip address of containers
+docker ps
+docker inspect conntainer-name
+
+#to connect to other container we can use service name isnstead of ipadress of container
+
+#to see current netwirk of containers
+docker network ls
+
+#docker network inspect network-name

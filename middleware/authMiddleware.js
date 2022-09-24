@@ -5,7 +5,7 @@ const protect = (req, res ,next)=>{
         return res.status(401).json({status: "fail", message: "unauthorised"});
 
     }
-req.user=user;
+    req.user=user;
     next();
 
 
